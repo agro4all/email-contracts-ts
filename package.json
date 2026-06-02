@@ -1,0 +1,7 @@
+{
+  "name": "email-contracts-ts",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "description": "Auto-generated TypeScript interfaces for Agro4all email templates. Source of truth: email_contracts Go package in the server repo.",
+  "private": true
+}
