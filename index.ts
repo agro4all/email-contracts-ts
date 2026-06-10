@@ -49,7 +49,7 @@ export interface DeliveryProduct {
 export interface DeliveriesAutoConfirmedData {
   supplierName: string;
   date: string;
-  warehouse: string;
+  stockLocation: string;
   appURL: string;
   products: DeliveryProduct[];
 }
