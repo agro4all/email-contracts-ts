@@ -39,6 +39,7 @@ export interface ConnectionPendingApprovalData {
 export interface DeliveryProduct {
   name: string;
   amount: string;
+  productCategory: string;
 }
 /**
  * DeliveriesAutoConfirmedData holds template variables for the DeliveriesAutoConfirmed email.
