@@ -71,6 +71,26 @@ export interface ForgotPasswordData {
 }
 
 //////////
+// source: invoice_finalized.go
+
+/**
+ * InvoiceFinalizedData holds template variables for the InvoiceFinalized email:
+ * the invoice of a customer we charge by direct debit. Stripe does not mail that
+ * one itself — it only notifies the customer of the debit and, once the money has
+ * settled, of the payment — so this mail is what puts the invoice in their inbox.
+ * The PDF travels as an attachment, so the template only links the hosted page.
+ */
+export interface InvoiceFinalizedData {
+  organizationName: string;
+  invoiceNumber: string;
+  /**
+   * Amount due, formatted in the reader's language, with its currency symbol.
+   */
+  amount: string;
+  hostedInvoiceURL: string;
+}
+
+//////////
 // source: missing_distributor.go
 
 /**
