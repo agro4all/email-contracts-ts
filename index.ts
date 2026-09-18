@@ -71,6 +71,55 @@ export interface ForgotPasswordData {
 }
 
 //////////
+// source: invite.go
+
+/**
+ * InviteData holds template variables for the invite emails: InviteAdvisor,
+ * InviteFarmer, InvitedByUser and AccountConfirmation, which one code path sends
+ * and which therefore share one shape. A template reads the fields it needs and
+ * ignores the rest.
+ * Names arrive formatted, and everything optional is a string. The templates used
+ * to be handed the user objects and call FormatUserName on them, which tied them to
+ * a Go type: the day that type changed the advisor mail stopped being sent, and
+ * nothing but sending one would have shown it. An absent value being "" also makes
+ * {{ if .InvitedByName }} mean what it says — a struct is always true, so the
+ * guards that tested one never guarded anything.
+ */
+export interface InviteData {
+  /**
+   * FirstName is the invited user, for a mail that greets by first name.
+   */
+  firstName: string;
+  /**
+   * UserName is the same person's full name, for one that greets in full.
+   */
+  userName: string;
+  /**
+   * OrganizationName is the organization the invited user belongs to. Empty when
+   * they belong to none.
+   */
+  organizationName: string;
+  /**
+   * InvitedByName is whoever sent the invite. Empty when nobody did — an account
+   * confirmation has no inviter.
+   */
+  invitedByName: string;
+  /**
+   * InvitedByOrganization is that person's organization, whose registrations an
+   * advisor is being given access to.
+   */
+  invitedByOrganization: string;
+  /**
+   * AppURL is where the button points.
+   */
+  appURL: string;
+  /**
+   * Secret is the invite code the link carries.
+   */
+  secret: string;
+}
+
+//////////
 // source: invoice_finalized.go
 
 /**
